@@ -1,28 +1,7 @@
 {
-  "_from": "@yy/feb",
-  "_id": "@yy/feb@0.5.8",
-  "_inBundle": false,
-  "_integrity": "sha1-97ZNkmZvmCEkKS/XofstckrYfDE=",
-  "_location": "/@yy/feb",
-  "_phantomChildren": {},
-  "_requested": {
-    "type": "tag",
-    "registry": true,
-    "raw": "@yy/feb",
-    "name": "@yy/feb",
-    "escapedName": "@yy%2ffeb",
-    "scope": "@yy",
-    "rawSpec": "",
-    "saveSpec": null,
-    "fetchSpec": "latest"
-  },
-  "_requiredBy": [
-    "#USER"
-  ],
-  "_resolved": "https://npm-registry.yy.com/@yy/feb/download/@yy/feb-0.5.8.tgz",
-  "_shasum": "f7b64d92666f982124292fd7a1fb2d724ad87c31",
-  "_spec": "@yy/feb",
-  "_where": "/Users/liuliang",
+  "name": "feb",
+  "version": "0.5.8",
+  "description": "fe workflow",
   "author": {
     "name": "chenjiaili"
   },
@@ -110,13 +89,11 @@
   },
   "license": "ISC",
   "main": "index.js",
-  "name": "@yy/feb",
   "repository": {
     "type": "git",
-    "url": "git@git.yypm.com:feb/feb.git"
+    "url": "git@github.com:liuliangsir/feb.git"
   },
   "scripts": {
     "lint": "eslint ."
-  },
-  "version": "0.5.8"
+  }
 }
