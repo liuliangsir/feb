@@ -1,0 +1,167 @@
+# FEB changelog
+
+## 0.5.8
+
+- 增加 js.assets 打开是，可以 import css。
+
+## 0.5.7
+
+- 增加在 js.assets 打开时，可以在普通 js 中 import scss（不一定 vue 文件）。
+- 修改 gulp-tmtsprite 使用 jimp 代替 lwip，支持新版本的 node。
+
+## 0.5.6
+
+- 更新 art-template 版本到 4.12.1。
+- 优化了 base64 图片规则，现在只需把图片放置在 `img/inline` 或者 `img/base64` 目录中即可。
+取消了 `?__inline` 这种方式。
+详见文档：http://feteam.yypm.com/feb/feature/css.html#feat-base64
+
+## 0.5.5
+
+- 修复 static 目录里的文件会被 hash 的问题。
+
+## 0.5.4
+
+- 修复 WDS 模式下，JS 自动刷新不正常的情况。
+
+## 0.5.3
+
+- 还是继续使用 cheap-eval-source-map，因为性能问题。
+如在 js.assets 下需要 source map，请修改 webpack 配置 devtool 为 source-map。
+- 修复 HMR 下替换图片不会 update 的问题。
+- 修复 vue 开发下，图片没有使用 image-min 压缩的问题。
+
+## 0.5.2
+
+- 修复 dev 模式下 CDN 问题。
+
+## 0.5.1
+
+- 修复用 webpack 处理 assets 时，子目录失效的问题。
+
+## 0.5.0
+
+- 更新 tmod-loader 到 art-template-loader，使用最新的 art-template（兼容 tmod），
+文档：http://feteam.yypm.com/feb/feature/js.html#feat-tmod。
+- 增加了为资源文件配置 CDN 地址的功能，可在 project.cdn 下配置，
+文档：http://feteam.yypm.com/feb/config/project.html#project-cdn
+- 重写了资源文件名 hash 功能，现在 js 中引用的资源都能够被 hash 到了。
+- 增加了 `src/static` 目录，该目录下的所有文件和子目录都会被直接复制到 `dev/` 和 `output/` 目录下。
+- 修改了 babel 和 eslint 的 exclude，现在只有 node_modules 目录会被 exclude，
+其他文件都会被 babel 和 eslint 处理（假如打开该功能的话），
+所以请在第三库和不需要 ESLint 的文件中添加 ESLint 忽略注释。
+
+---
+
+## 0.4.0
+
+- 增加了 vue-loader 支持。
+- 优化了 webpack 配置代码。
+- 更新了依赖版本。
+
+---
+
+## 0.3.2
+
+- 修复 webpack output.publicPath 问题。
+
+## 0.3.1
+
+- 分离了 WDS（webpack dev server） 和 HMR（hot module replacement）配置选项，
+默认 js.wds 为 true，js.hmr 为 false。因为 HMR 在 IE8 下脚本会报错，所以分离了配置项。
+- 微调了 webpack 配置，让 devtool 可以配置，方便在 IE8 下调试。
+
+## 0.3.0
+
+- 现在默认使用 webpack dev server 来构建 JS，并打开 HMR（热模块替换），在内存中完成构建 JS，
+所以大大加快了构建速度，但是会没有 JS 文件输出到 assets/js 目录，可以设置 js.hmr 为 false 去关闭。
+- 着重优化了 JS 构建部分的代码。
+- 使用了 browser sync 的 css inject，不用刷新页面也能热更新 css。
+- 调整了部分代码。
+
+---
+
+## 0.2.6
+
+- base64 不删除原始图片了，因为会有多个页面公用一个素材的情况。
+
+## 0.2.5
+
+- 增加了 project.path.dev 和 project.path.output 到配置中，可以自定义开发和生成的输出目录。
+
+## 0.2.4
+
+- 修复 @yy 的依赖。
+
+## 0.2.3
+
+- 修复 Mac 下命令行问题。
+
+## 0.2.2
+
+- 使用 yy npm 源。
+
+## 0.2.1
+
+- 更新 assemble 版本，修复 Mac 下 gulp-imagemin 报错 EACCES 的问题。
+
+## 0.2.0
+
+- 增加了 feb p 命令，可以直接使用 feb p -m "xxx" 来完成 feb o，git add，git commit，git push 的一系列操作。具体见[文档](http://feteam.yypm.com/feb/basic/publish.html)。
+- 增加了 feb r 命令，用于 develop 和 master 两个分支的 Git 开发模式。具体见[文档](http://feteam.yypm.com/feb/basic/publish.html)。
+- 使用 webpack-merge 来合并 webpack 配置，现在所有的 webpack 配置选项都可以在 feb.config.js 中的 webpack 属性中配置了。
+- 修复了 webpack CommonsChunkPlugin 按目录划分代码不准确的问题。
+- 增加了 js 中两个预置注入全局变量 __PROD__ 和 __DEV__，可以确保某些代码不会被发布到正式环境（例如 Mock）。具体见[文档](http://feteam.yypm.com/feb/feature/js.html#feat-var)。
+- 现在如果 sass 或者 webpack 构建出错，feb o 都会被异常中断。
+- 修复了 project.debug 打开后的颜色显示。
+- 重构了部分的代码，把代码改成 ES6。
+
+---
+
+## 0.1.0
+
+- 增加了 ESLint，默认打开，改善团队代码质量。配置项为 js.eslint。
+- 增加了 Babel 功能，默认关闭，可以在新浏览器项目上使用 ES6 了。配置项为 js.babel。
+- 现在生产构建默认会自动去掉 JS 代码里的所有 console 输出。可通过 js.console 来配置，配置 true 为保留 console 输出。
+- 增加了 js 配置大项，来实现 JS 的相关配置。
+- 把 bs 配置大项移动到 project 里，现在 bs 成为 project 的配置小项。
+- 更新了文档，现在 FEB 的文档独立出来：http://feteam.yypm.com/feb/
+- 更新了种子项目以适应新版本。
+
+---
+
+## 0.0.11
+
+- 紧急修复删除了 package.json 里的 webpack 依赖。
+- 增加了 json-loader。
+
+## 0.0.10
+
+- 修复了 UglifyJS IE8 的压缩问题，现在可以更新 webpack 到最新版本了。
+- 更新了 package.json 里的依赖关系。
+
+## 0.0.9
+
+- 增加 html/*.hbs 两个预置变量 __PROD__ 和 __DEV__，为 html 提供生产和开发环境的条件渲染
+
+## 0.0.8
+
+- 填了种子项目的坑
+- 增加了错误目录检查
+
+## 0.0.7
+
+- 图片压缩输出忽略 test 目录
+
+## 0.0.6
+
+- 回滚 webpack 到 1.13.1 以修复 UglifyJS IE8 压缩代码的问题（交友充值手机二维码遇到的问题）
+
+## 0.0.5
+
+- 修复 Win10 路径问题（gulp.src 增加 base 属性）
+
+## 0.0.4
+
+- 增加版本号显示
+- 增加 changelog 记录版本修改
