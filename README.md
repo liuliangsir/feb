@@ -1,5 +1,7 @@
 # FEB（Front End Builder）
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/liuliangsir/feb.svg)](https://greenkeeper.io/)
+
 > FEB（Front End Builder） 是一个基于 [gulp4](https://github.com/gulpjs/gulp/tree/4.0)
 和 [webpack](http://webpack.github.io/) 的命令行构建工具。
 
